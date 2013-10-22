@@ -29,23 +29,21 @@ char *url_escape(char *input)
     for(i = 0; i < end; i++)
     {
         char c = input[i];
-        char replace_with[4];
         if(is_symbol(c)) 
         {
-            sprintf(replace_with, "%%%02X", c);
-            strcat(output, replace_with);
+            sprintf(output, "%s%%%02X", output, c); //String.Format("{0} %{1:x2}", output, c), in c# format
         }
         else
         {
-            char newc[1];
-            newc[0] = c;
+            char newc[2] = { c, '\0' };
             strcat(output, newc);
         }
     }
     return output;
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv) 
+{
     if(argc > 1)
     {
         char* input = argv[1];
