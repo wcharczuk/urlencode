@@ -7,7 +7,7 @@
 // urlencode stuff
 // echo stuff | urlencode 
 
-int isSymbol(char c)
+bool is_symbol(char c)
 {
     if(c == '\0') return 0;
     if(c == '\r') return 0;
@@ -20,26 +20,27 @@ int isSymbol(char c)
 
 char *url_escape(char *input)
 {
-    int index = 0;
+    int i;
     int end = strlen(input);
-    char *output = (char *)malloc(end * 2 * sizeof(char));
     
-    while(index < end)
+    int final_size = (end * 2) + 1; //+1 for terminating null
+    char *output = malloc(final_size * sizeof(char));
+    
+    for(i = 0; i < end; i++)
     {
-        char c = input[index];
-        char *replace_with = (char*)malloc(3 * sizeof(char));
-        if(isSymbol(c)) 
+        char c = input[i];
+        char replace_with[4];
+        if(is_symbol(c)) 
         {
             sprintf(replace_with, "%%%02X", c);
             strcat(output, replace_with);
         }
         else
         {
-            char *newc = (char *)malloc(sizeof(char));
+            char newc[1];
             newc[0] = c;
             strcat(output, newc);
         }
-        index = index + 1;
     }
     return output;
 }
@@ -47,7 +48,7 @@ char *url_escape(char *input)
 int main(int argc, char **argv) {
     if(argc > 1)
     {
-        char *input = argv[1];
+        char* input = argv[1];
         printf("%s", url_escape(input));
     }
     else
