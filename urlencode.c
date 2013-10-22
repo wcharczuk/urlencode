@@ -18,7 +18,7 @@ bool is_symbol(char c)
     return is_non_symbol == 0;
 }
 
-char *url_escape(char *input)
+char* url_escape(char *input)
 {
     int i = 0;
     int index_in_output = 0;
@@ -26,7 +26,7 @@ char *url_escape(char *input)
 
     int final_size = (end * 2) + 1; //+1 for terminating null
     char *output = malloc(final_size * sizeof(char));
-    
+        
     for(; i < end; i++)
     {
         char c = input[i];
@@ -37,11 +37,11 @@ char *url_escape(char *input)
         }
         else
         {
-            char newc[2] = { c, '\0' };
-            strcat(output, newc);
+            sprintf(output+index_in_output, "%c", c);
             index_in_output++;
         }
     }
+    
     return output;
 }
 
@@ -49,10 +49,8 @@ int main(int argc, char **argv)
 {
     if(argc > 1)
     {
-        char* input = argv[1];
-        char *results = url_escape(input);
+        char *input = argv[1];
         printf("%s", url_escape(input));
-        free(results);
     }
     else
     {
@@ -60,9 +58,7 @@ int main(int argc, char **argv)
         size_t size;
         while(getline(&line, &size, stdin) != -1)
         {
-            char *results = url_escape(line);
-            printf("%s", results);
-            free(results);
+            printf("%s", url_escape(line));
         }
     }
     return 0;
