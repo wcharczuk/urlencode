@@ -54,10 +54,8 @@ int main(int argc, char **argv) {
     {
         char *line = NULL;
         size_t size;
-        if(getline(&line, &size, stdin) == -1) {
-            return 1;
-        }
-        else {
+        while(getline(&line, &size, stdin) != -1)
+        {
             printf("%s", url_escape(line));
         }
     }
