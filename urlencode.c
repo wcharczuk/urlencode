@@ -50,7 +50,9 @@ int main(int argc, char **argv)
     if(argc > 1)
     {
         char* input = argv[1];
+        char *results = url_escape(input);
         printf("%s", url_escape(input));
+        free(results);
     }
     else
     {
@@ -58,7 +60,9 @@ int main(int argc, char **argv)
         size_t size;
         while(getline(&line, &size, stdin) != -1)
         {
-            printf("%s", url_escape(line));
+            char *results = url_escape(line);
+            printf("%s", results);
+            free(results);
         }
     }
     return 0;
