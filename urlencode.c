@@ -19,7 +19,6 @@ int isSymbol(char c)
 
 char *url_escape(char *input)
 {
-    int state = 0;
     int index = 0;
     int end = strlen(input);
     char *output = (char *)malloc(end * 2 * sizeof(char)); //double the input size. worse case scenario.
