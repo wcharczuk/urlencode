@@ -20,7 +20,6 @@ bool is_symbol(char c)
 
 char *url_escape(char *input)
 {
-    
     int i = 0;
     int index_in_output = 0;
     int end = strlen(input);
