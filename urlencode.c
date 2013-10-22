@@ -21,7 +21,7 @@ char *url_escape(char *input)
 {
     int index = 0;
     int end = strlen(input);
-    char *output = (char *)malloc(end * 2 * sizeof(char)); //double the input size. worse case scenario.
+    char *output = (char *)malloc(end * 2 * sizeof(char));
     
     while(index < end)
     {
@@ -51,10 +51,14 @@ int main(int argc, char **argv) {
     }
     else
     {
-        char line[255];
-        char *p;
-        p = fgets(line, 255, stdin);
-        printf("%s", url_escape(p));
+        char *line = NULL;
+        size_t size;
+        if(getline(&line, &size, stdin) == -1) {
+            return 1;
+        }
+        else {
+            printf("%s", url_escape(line));
+        }
     }
     return 0;
 }
