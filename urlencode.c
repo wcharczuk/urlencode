@@ -4,6 +4,7 @@
 #include <stdbool.h>
 
 //two ways to use urlencode:
+// urlencode stuff
 // echo stuff | urlencode 
 
 int isSymbol(char c)
