@@ -1,6 +1,10 @@
-***urlencode***
+#urlencode#
 
 A simple commandline utility to url encode strings.
+
+_But can't i just write an awk/perl/python script?_
+
+You sure can! I just wanted to see if I could write this in C.
 
 **USAGE**
 
