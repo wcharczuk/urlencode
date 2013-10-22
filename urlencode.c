@@ -20,23 +20,27 @@ bool is_symbol(char c)
 
 char *url_escape(char *input)
 {
-    int i;
-    int end = strlen(input);
     
+    int i = 0;
+    int index_in_output = 0;
+    int end = strlen(input);
+
     int final_size = (end * 2) + 1; //+1 for terminating null
     char *output = malloc(final_size * sizeof(char));
     
-    for(i = 0; i < end; i++)
+    for(; i < end; i++)
     {
         char c = input[i];
         if(is_symbol(c)) 
         {
-            sprintf(output, "%s%%%02X", output, c); //String.Format("{0} %{1:x2}", output, c), in c# format
+            sprintf(output+index_in_output, "%%%02X", c);
+            index_in_output+=3;
         }
         else
         {
             char newc[2] = { c, '\0' };
             strcat(output, newc);
+            index_in_output++;
         }
     }
     return output;
