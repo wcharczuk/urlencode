@@ -1,0 +1,1 @@
+Oct 29 08:52:27 wills-mbp.home airportd[116]: _doAutoJoin: Already associated to “SomeBullshit”. Bailing on auto-join.
