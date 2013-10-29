@@ -28,6 +28,7 @@ char *url_decode(const char *input)
 		}
 	}
 
+	*working = 0; //null terminate
 	return output;
 }
 
@@ -51,5 +52,6 @@ int main(int argc, char **argv)
             free(decoded);
         }
     }
+    
     return 0;
 }

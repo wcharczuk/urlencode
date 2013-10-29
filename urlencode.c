@@ -41,7 +41,7 @@ char *url_encode(const char *input)
             index_in_output+=3;
         }
     }
-    
+    output[index_in_output] = 0; //null terminate
     return output;
 }
 
