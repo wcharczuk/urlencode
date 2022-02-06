@@ -1,4 +1,4 @@
-#urlencode / urldecode#
+# urlencode / urldecode
 
 A simple (set of) commandline utilities to url encode/decode strings.
 
@@ -6,8 +6,7 @@ _But can't i just write an awk/perl/python script?_
 
 You sure can! I just wanted to see if I could write this in C.
 
-
-**INSTALLATION**
+## INSTALLATION
 
 Run the make file, and make install.
 
@@ -17,8 +16,7 @@ make; make install
 
 This will drop the ```urlencode``` and ```urldecode``` binaries in your ```/usr/local/bin``` directory.
 
-
-**USAGE**
+## USAGE
 
 Either pass in the string as an arument
 
